@@ -1,0 +1,48 @@
+{
+  "name": "apollo-odata-resolver",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/slipalison/apollo-odata-resolver.git",
+  "author": "Alison de Amorim <alisonmsn@hotmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --coverage --forceExit",
+    "test:ci": "jest --coverage --ci",
+    "test:watch": "jest --watch",
+    "lint": "eslint .",
+    "lint:ci": "eslint --ext .js --format=json --output-file=./report.json ./src",
+    "prepush": "yarn lint && yarn test",
+    "build": "yarn -v"
+  },
+  "devDependencies": {
+    "apollo-server-testing": "^2.5.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.16.0",
+    "grpc-mock": "^0.6.0",
+    "husky": "^2.3.0",
+    "jest": "^24.8.0",
+    "jest-cli": "^24.8.0",
+    "jest-fetch-mock": "^2.1.2",
+    "nodemon": "^1.19.0", 
+    "get-port": "^5.0.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "*.js"
+    ],
+    "coverageReporters": [
+      "cobertura",
+      "html",
+      "lcov"
+    ]
+  },
+  "dependencies": {
+    "apollo-newrelic-extension": "^0.1.1",
+    "apollo-server": "^2.5.0",
+    "apollo-server-core": "^2.6.4",
+    "apollo-server-express": "^2.6.3",
+    "graphql": "^14.3.1",
+    "graphql-tools": "^4.0.4",
+    "node-fetch": "^2.6.0"
+  }
+}
