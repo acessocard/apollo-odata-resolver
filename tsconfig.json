@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": ".",
+    "outDir": "build",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "paths": {
+      "src": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "__tests__/**/*.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts"],
+  "extends": "./node_modules/gts/tsconfig-google.json"
+}
