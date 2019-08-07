@@ -35,6 +35,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+build/
 
 # TypeScript v1 declaration files
 typings/
@@ -55,7 +56,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+# .env
 
 # next.js build output
 .next
