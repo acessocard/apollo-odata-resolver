@@ -2,11 +2,11 @@ import { ApolloServer, gql } from 'apollo-server';
 import { createTestClient } from 'apollo-server-testing';
 import { makeExecutableSchema } from 'graphql-tools';
 
-import { ApolloODataResolver } from '../src';
 import { ODataResolver, Resolvers } from '../src/data-struct';
 
-import { Fetch, RequestOptions } from '../src/fetch-ts/Fetch';
 import { GraphQLResponse } from 'graphql-extensions';
+import { RequestOptions, Fetch } from '../src/fetch-ts/Fetch';
+import { ApolloODataResolver } from '../src/index';
 
 describe('Validação do resolver', () => {
   it('Valida resposta com erro do OData', async () => {
