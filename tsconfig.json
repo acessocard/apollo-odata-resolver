@@ -6,10 +6,12 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "paths": {
-      "src": ["./src/*"]
-    }
+      "apollo-odata-resolver": ["src/*"]
+    },
+    "declaration": true
   },
-  "include": ["src/**/*.ts", "__tests__/**/*.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts"],
+  
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "__tests__"],
   "extends": "./node_modules/gts/tsconfig-google.json"
 }
