@@ -25,15 +25,14 @@ install:
   # Get the latest stable version of Node.js or io.js
   - ps: >-
     Install-Product node $env:nodejs_version
-    yarn install --frozen-lockfile
-
-    "//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII
+    
+    "//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII;
 
   # - ps: Install-Product node $env:nodejs_version
   # - ps: "//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII
   # # install modules
   # # - npm install
-  # - yarn install --frozen-lockfile
+  - yarn install --frozen-lockfile
 
 build_script:
   - git config --global user.email "dev@meuacesso.com.br"
