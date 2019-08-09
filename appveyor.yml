@@ -4,11 +4,16 @@ environment:
   nodejs_version: "10"
   npm_auth_token:
     secure: EMAG/RBf64HYn+zMLR9NmZM9ZP6RJlQCblOYOhMn+9geT9k7imsqmc6qfmoBLodM
+
 init:
   - git config --global core.autocrlf input
 
 build:
   verbosity: minimal
+
+cache:
+  - node_modules
+  - '%LOCALAPPDATA%/Yarn'
 
 branches:
   only:
@@ -19,6 +24,7 @@ branches:
 install:
   # Get the latest stable version of Node.js or io.js
   - ps: Install-Product node $env:nodejs_version
+  - ps: "//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII
   # install modules
   # - npm install
   - yarn install --frozen-lockfile
@@ -32,12 +38,8 @@ build_script:
 test_script:
   - yarn test
 
-cache:
-  - node_modules
-  - '%LOCALAPPDATA%/Yarn'
-
-deploy:
-  - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "C:\projects\apollo-odata-resolver\.npmrc" -Encoding ASCII'
+after_deploy:
+  - yarn publish
 
 # Don't actually build.
 # build: off
