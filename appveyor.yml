@@ -1,3 +1,4 @@
+image: Ubuntu
 version: 1.0.{build}
 environment:
   nodejs_version: "10"
@@ -41,6 +42,6 @@ deploy_script:
 
 deploy:
   provider: Environment
-  name: NPM
+  name: Production
   on:
     branch: master
