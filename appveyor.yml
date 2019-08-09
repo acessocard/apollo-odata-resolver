@@ -38,7 +38,7 @@ build_script:
     yarn run build
 test_script:
   - yarn test:ci
-  - ps: Get-Content .\.npmrc
+  - ps: Get-Content "$env:userprofile\.npmrc"
   - yarn publish --non-interactive
 
 before_deploy:
