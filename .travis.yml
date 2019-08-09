@@ -20,6 +20,7 @@ jobs:
       script: 
         - yarn version --new-version patch
         - yarn build
+        #b5f5fb610aeff3833646c774345f7f41bd1c3dae
         - git push --tags
       deploy:
         provider: npm
@@ -28,6 +29,9 @@ jobs:
         skip_cleanup: true
         on:
           tags: true
+      after_success:
+        - ./push.sh
+
 
 branches:
   only:
