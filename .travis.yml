@@ -23,8 +23,8 @@ jobs:
         email: '$NPM_EMAIL'
         api_key: '$NPM_TOKEN'
         skip_cleanup: true
-        on:
-          tags: true
+        # on:
+        #   tags: true
 
 branches:
   only:
