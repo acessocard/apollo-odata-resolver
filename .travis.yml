@@ -28,7 +28,8 @@ jobs:
         # on:
         #   tags: true
       after_success:
-        - ./push.sh
+        - git remote add origin https://$GH_TOKEN@github.com/slipalison/apollo-odata-resolver.git 
+        - git push --tags
 
 
 branches:
