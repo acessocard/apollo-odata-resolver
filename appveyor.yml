@@ -1,6 +1,12 @@
+version: 1.0.{build}
 # Test against the latest version of this Node.js version
 environment:
   nodejs_version: "10"
+  npm_auth_token:
+    secure: EMAG/RBf64HYn+zMLR9NmZM9ZP6RJlQCblOYOhMn+9geT9k7imsqmc6qfmoBLodM
+
+build:
+  verbosity: minimal
 
 branches:
   only:
