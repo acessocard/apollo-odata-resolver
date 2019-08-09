@@ -7,7 +7,7 @@ build:
   verbosity: detailed
 
 init:
-  - ps: echo $env:npm_auth_token
+  - ps: 'echo $env:npm_auth_token'
   - git config --global core.autocrlf input
   - git config --global user.email "dev@meuacesso.com.br"
   - git config --global user.name "acessocard"
