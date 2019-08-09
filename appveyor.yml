@@ -37,7 +37,7 @@ cache:
   - '%LOCALAPPDATA%/Yarn'
 
 # deploy:
-#   - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII'
+#   - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "C:\projects\apollo-odata-resolver\.npmrc" -Encoding ASCII'
 
 # Don't actually build.
 # build: off
