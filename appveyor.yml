@@ -1,5 +1,4 @@
 version: 1.0.{build}
-# Test against the latest version of this Node.js version
 environment:
   nodejs_version: "10"
   npm_auth_token:
@@ -22,9 +21,7 @@ branches:
     - master
     - '/v[0-9]+(\.[0-9]+)*/'
 
-# Install scripts. (runs after repo cloning)
 install:
-  # Get the latest stable version of Node.js or io.js
   - ps: Install-Product node $env:nodejs_version
 
   - yarn install --frozen-lockfile
@@ -32,7 +29,7 @@ install:
 
 build_script:
 - ps: >-
-    yarn version --patch
+    yarn version --new-version $env:APPVEYOR_BUILD_VERSION
 
     yarn run build
 test_script:
@@ -42,21 +39,8 @@ before_deploy:
 deploy_script:
 - ps: yarn publish
 
-
-# before_deploy:
-#   - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII'
-# after_deploy:
-#   - ps: yarn publish
-
-# build_script:
-#   - yarn version --patch
-#   - yarn run build
-
-# test_script:
-#   - yarn test
-
-# # deploy_script: 
-# #   - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII;'
-
-# after_deploy:
-#   - yarn publish
+deploy:
+  provider: Environment
+  name: NPM
+  on:
+    branch: master
