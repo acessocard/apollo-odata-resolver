@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": ".",
+    "outDir": "build",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "paths": {
+      "apollo-odata-resolver": ["src/*"]
+    },
+    "declaration": true
+  },
+  
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "__tests__"],
+  "extends": "./node_modules/gts/tsconfig-google.json"
+}

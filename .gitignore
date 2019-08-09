@@ -35,12 +35,15 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+build/
+dist/
 
 # TypeScript v1 declaration files
 typings/
 
 # Optional npm cache directory
 .npm
+.npmrc
 
 # Optional eslint cache
 .eslintcache
@@ -55,7 +58,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+# .env
 
 # next.js build output
 .next
