@@ -9,7 +9,7 @@ init:
   - git config --global core.autocrlf input
 
 build:
-  verbosity: minimal
+  verbosity: detailed
 
 cache:
   - node_modules
@@ -28,6 +28,8 @@ branches:
   # # - npm install
 install:
   # Get the latest stable version of Node.js or io.js
+  - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII'
+  - npm whoami
   - ps: Install-Product node $env:nodejs_version
   - git config --global user.email "dev@meuacesso.com.br"
   - git config --global user.name "acessocard"
@@ -41,7 +43,7 @@ test_script:
   - yarn test
 
 deploy_script: 
-  - ps: "//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII;
+  - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII;'
 
 after_deploy:
   - yarn publish
