@@ -1,6 +1,6 @@
 {
   "name": "apollo-odata-resolver-tests",
-  "version": "1.2.2",
+  "version": "1.0.0",
   "description": "",
   "_moduleAliases": {
     "apollo-odata-resolver": "build/src"
