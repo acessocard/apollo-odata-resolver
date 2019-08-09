@@ -29,7 +29,7 @@ branches:
 install:
   # Get the latest stable version of Node.js or io.js
   - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII'
-  - npm whoami
+  # - npm whoami
   - ps: Install-Product node $env:nodejs_version
   - git config --global user.email "dev@meuacesso.com.br"
   - git config --global user.name "acessocard"
