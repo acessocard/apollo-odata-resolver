@@ -22,8 +22,8 @@ install:
   - yarn install --frozen-lockfile
 
 build_script:
+  - npm version %APPVEYOR_BUILD_VERSION% -m 'v%APPVEYOR_BUILD_VERSION%'
   - yarn run build
-  - npm version patch
 
 test_script:
   - yarn test
