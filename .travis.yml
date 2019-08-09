@@ -30,7 +30,9 @@ jobs:
       after_success:
         - git config --global user.email "alisonmsn@hotmail.com"
         - git config --global user.name "slipalison"
-        - git remote add origin https://$GH_TOKEN@github.com/slipalison/apollo-odata-resolver.git 
+        - git add --all
+        - git commit -m 'some message'
+        - git push https://$GH_TOKEN@github.com/slipalison/apollo-odata-resolver.git 
         - git push --tags
 
 
