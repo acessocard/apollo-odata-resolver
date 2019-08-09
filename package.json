@@ -13,7 +13,7 @@
   "license": "Apache-2.0",
   "keywords": [],
   "scripts": {
-    "test": "jest --coverage --forceExit",
+    "test": "jest --coverage --forceExit --detectOpenHandles",
     "test:ci": "jest --coverage --ci",
     "check": "gts check",
     "clean": "gts clean",
