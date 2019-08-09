@@ -30,7 +30,7 @@ install:
   # Get the latest stable version of Node.js or io.js
   - ps: >-
     Install-Product node $env:nodejs_version;
-    yarn install --frozen-lockfile
+    yarn install --frozen-lockfile;
     "//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII;
 
 
