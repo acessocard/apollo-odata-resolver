@@ -17,6 +17,7 @@ install:
 
 build_script:
   - yarn run build
+  - npm version patch
 
 test_script:
   - yarn test
@@ -26,7 +27,6 @@ cache:
   - '%LOCALAPPDATA%/Yarn'
 
 deploy:
-  - npm version patch
   - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII'
 
 # Don't actually build.
