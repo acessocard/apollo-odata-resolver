@@ -36,7 +36,7 @@ build_script:
 
     yarn run build
 test_script:
-- ps: yarn test
+- yarn test:ci
 before_deploy:
 - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII'
 after_deploy:
