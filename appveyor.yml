@@ -32,7 +32,7 @@ install:
 
 build_script:
 - ps: >-
-    yarn version --patch
+    yarn version --new-version $env:APPVEYOR_BUILD_VERSION
 
     yarn run build
 test_script:
@@ -42,6 +42,11 @@ before_deploy:
 deploy_script:
 - ps: yarn publish
 
+deploy:
+  provider: Environment
+  name: Production
+  on:
+    branch: master
 
 # before_deploy:
 #   - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII'
