@@ -2,14 +2,16 @@ version: 1.0.{build}
 # Test against the latest version of this Node.js version
 environment:
   nodejs_version: "10"
-  # npm_auth_token:
-  #   secure: EMAG/RBf64HYn+zMLR9NmZM9ZP6RJlQCblOYOhMn+9geT9k7imsqmc6qfmoBLodM
+  npm_auth_token:
+    secure: t3A7BK3/Np/2YF3MFFIQmEzDrT26YEcMXzMLMiQFgxEVaE8y84pJ+46CnFsM+M5Y
+build:
+  verbosity: detailed
 
 init:
   - git config --global core.autocrlf input
+  - git config --global user.email "dev@meuacesso.com.br"
+  - git config --global user.name "acessocard"
 
-build:
-  verbosity: detailed
 
 cache:
   - node_modules
@@ -21,29 +23,40 @@ branches:
     - '/v[0-9]+(\.[0-9]+)*/'
 
 # Install scripts. (runs after repo cloning)
-
-  # - ps: Install-Product node $env:nodejs_version
-  # - ps: "//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII
-  # # install modules
-  # # - npm install
 install:
   # Get the latest stable version of Node.js or io.js
-  - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII'
-  # - npm whoami
   - ps: Install-Product node $env:nodejs_version
-  - git config --global user.email "dev@meuacesso.com.br"
-  - git config --global user.name "acessocard"
+
   - yarn install --frozen-lockfile
 
+
 build_script:
-  - yarn version --patch
-  - yarn run build
+- ps: >-
+    yarn version --patch
 
+    yarn run build
 test_script:
-  - yarn test
+- ps: yarn test
+before_deploy:
+- ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII'
+after_deploy:
+- ps: yarn publish
 
-# deploy_script: 
-#   - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII;'
 
-deploy_script:
-  - yarn publish
+# before_deploy:
+#   - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII'
+# after_deploy:
+#   - ps: yarn publish
+
+# build_script:
+#   - yarn version --patch
+#   - yarn run build
+
+# test_script:
+#   - yarn test
+
+# # deploy_script: 
+# #   - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII;'
+
+# after_deploy:
+#   - yarn publish
