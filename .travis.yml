@@ -20,14 +20,14 @@ jobs:
       script: 
         - yarn version --new-version patch
         - yarn build
-        - git push origin master --tag
+        - git push --tags
       deploy:
         provider: npm
         email: '$NPM_EMAIL'
         api_key: '$NPM_TOKEN'
         skip_cleanup: true
-        # on:
-        #   tags: true
+        on:
+          tags: true
 
 branches:
   only:
