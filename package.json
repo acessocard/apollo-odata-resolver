@@ -1,6 +1,6 @@
 {
-  "name": "apollo-odata-resolver-test",
-  "version": "1.0.0",
+  "name": "apollo-odata-resolver-tests",
+  "version": "1.0.2",
   "description": "",
   "_moduleAliases": {
     "apollo-odata-resolver": "build/src"
@@ -45,14 +45,9 @@
     "typescript": "^3.5.3"
   },
   "dependencies": {
-    "@grpc/proto-loader": "^0.5.1",
-    "@types/cookie-parser": "^1.4.1",
     "@types/debug": "^4.1.2",
     "@types/dotenv": "^6.1.1",
-    "@types/google-protobuf": "^3.2.7",
-    "@types/graphql": "^14.2.3",
     "@types/node": "^12.6.8",
-    "apollo-newrelic-extension": "^0.1.1",
     "apollo-server": "^2.5.0",
     "apollo-server-core": "^2.8.1",
     "apollo-server-express": "^2.7.2",
@@ -65,7 +60,6 @@
     "graphql-import-node": "^0.0.4",
     "graphql-tools": "^4.0.4",
     "gts": "^1.1.0",
-    "newrelic": "^5.11.0",
     "ts-node": "^8.3.0"
   }
 }
