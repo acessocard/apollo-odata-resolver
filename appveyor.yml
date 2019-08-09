@@ -4,6 +4,8 @@ environment:
   nodejs_version: "10"
   npm_auth_token:
     secure: EMAG/RBf64HYn+zMLR9NmZM9ZP6RJlQCblOYOhMn+9geT9k7imsqmc6qfmoBLodM
+init:
+  - git config --global core.autocrlf input
 
 build:
   verbosity: minimal
