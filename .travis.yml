@@ -13,11 +13,14 @@ install:
 jobs:
   include:
     - stage: Build and test
-      script:
+      script: 
         - yarn build
         - yarn test:ci
     - stage: npm release
-      script: yarn build
+      script: 
+        - yarn version --new-version patch
+        - yarn build
+        - git push origin master --tag
       deploy:
         provider: npm
         email: '$NPM_EMAIL'
