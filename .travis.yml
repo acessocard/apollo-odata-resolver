@@ -18,15 +18,15 @@ jobs:
         - yarn test:ci
     - stage: npm release
       script: 
-        - yarn version --new-version patch
+        - yarn version --new-version 1.0.$TRAVIS_BUILD_ID
         - yarn build
       deploy:
         provider: npm
         email: '$NPM_EMAIL'
         api_key: '$NPM_TOKEN'
         skip_cleanup: true
-        on:
-          tags: true
+        # on:
+        #   tags: true
       after_success:
         - ./push.sh
 
