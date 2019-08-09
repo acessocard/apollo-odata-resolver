@@ -24,6 +24,8 @@ install:
   - yarn install --frozen-lockfile
 
 build_script:
+  - git config --global user.email "dev@meuacesso.com.br"
+  - git config --global user.name "acessocard"
   - yarn version --patch
   - yarn run build
 
