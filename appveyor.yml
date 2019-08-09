@@ -1,12 +1,13 @@
 version: 1.0.{build}
 environment:
   nodejs_version: "10"
-  # npm_auth_token:
-  #   secure: t3A7BK3/Np/2YF3MFFIQmEzDrT26YEcMXzMLMiQFgxEVaE8y84pJ+46CnFsM+M5Y
+  npm_auth_token:
+    secure: t3A7BK3/Np/2YF3MFFIQmEzDrT26YEcMXzMLMiQFgxEVaE8y84pJ+46CnFsM+M5Y
 build:
   verbosity: detailed
 
 init:
+  - ps: echo $env:npm_auth_token
   - git config --global core.autocrlf input
   - git config --global user.email "dev@meuacesso.com.br"
   - git config --global user.name "acessocard"
