@@ -26,6 +26,9 @@ install:
 
   - yarn install --frozen-lockfile
 
+  - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII'
+
+
 
 build_script:
 - ps: >-
@@ -33,11 +36,13 @@ build_script:
 
     yarn run build
 test_script:
-- yarn test:ci
+  - yarn test:ci
+  - yarn publish
+
 before_deploy:
-- ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII'
+  - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII'
 deploy_script:
-- ps: yarn publish
+  - ps: yarn publish
 
 deploy:
   provider: Environment
