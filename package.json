@@ -1,6 +1,6 @@
 {
   "name": "apollo-odata-resolver-tests-5",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "",
   "_moduleAliases": {
     "apollo-odata-resolver": "build/src"
@@ -25,8 +25,7 @@
     "prepare": "yarn run compile",
     "pretest": "yarn run compile",
     "posttest": "yarn run check",
-    "debug": "yarn clean && yarn compile && nodemon --inspect build/src/server.js",
-    "prepublish": "tsc"
+    "debug": "yarn clean && yarn compile && nodemon --inspect build/src/server.js"
   },
   "devDependencies": {
     "@types/debug": "^4.1.2",

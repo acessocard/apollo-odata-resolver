@@ -34,10 +34,10 @@ jobs:
         - git config --global user.name "slipalison"
         - git config --global push.default matching
         - git config credential.helper "store --file=.git/credentials"
-        - echo "https://$GH_TOKEN:@github.com" > .git/credentials
+        - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
         - git checkout -- .
-        - git status
         - yarn version --patch
+        - git status
         - git push https://${GH_TOKEN}@github.com/slipalison/apollo-odata-resolver.git origin HEAD:$TRAVIS_BRANCH
         - git push https://${GH_TOKEN}@github.com/slipalison/apollo-odata-resolver.git --tags
         # provider: script
