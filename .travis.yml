@@ -29,7 +29,7 @@ jobs:
         on:
           branch: master
           tags: true
-      after_success:
+      before_deploy:
         - git config --global user.email "alisonmsn@hotmail.com"
         - git config --global user.name "slipalison"
         - git config --global push.default matching
