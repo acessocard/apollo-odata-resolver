@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "10"
+  - '10'
 
 cache:
   yarn: true
@@ -13,12 +13,13 @@ install:
 jobs:
   include:
     - stage: Build and test
-      script: 
+      script:
         - yarn build
         - yarn test:ci
     - stage: npm release
-      script: 
-        - yarn version --new-version 1.0.$TRAVIS_BUILD_ID
+      script:
+        # - yarn version --new-version 1.0.$TRAVIS_BUILD_ID
+        # - yarn version --patch
         - yarn build
       deploy:
         provider: npm
@@ -27,14 +28,22 @@ jobs:
         skip_cleanup: true
         on:
           tags: true
-      after_success:
-        - git config --global user.email "alisonmsn@hotmail.com"
-        - git config --global user.name "slipalison"
-        - git add --all
-        - git commit -m 'some message'
-        - git push https://$GH_TOKEN@github.com/slipalison/apollo-odata-resolver.git 
-        - git push https://$GH_TOKEN@github.com/slipalison/apollo-odata-resolver.git --tags
-
+      before_deploy:
+        provider: script
+        skip_cleanup: true
+        script: push.sh
+        on:
+          branch: master
+          tags: false
+        # - git config --global push.default matching
+        # - git config --global user.email "alisonmsn@hotmail.com"
+        # - git config --global user.name "slipalison"
+        # - git config credential.helper "store --file=.git/credentials"
+        # - echo "https://${GitHub_Token}:@github.com" > .git/credentials
+        # - git add --all
+        # - git commit -m 'some message'
+        # - git push https://${GH_TOKEN}@github.com/slipalison/apollo-odata-resolver.git
+        # - git push https://${GH_TOKEN}@github.com/slipalison/apollo-odata-resolver.git --tags
 
 branches:
   only:
