@@ -32,7 +32,7 @@ jobs:
       before_deploy:
         provider: script
         skip_cleanup: true
-        script: push.sh
+        script: ./push.sh
         on:
           tags: false
         # - git config --global push.default matching
