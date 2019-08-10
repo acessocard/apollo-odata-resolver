@@ -31,11 +31,10 @@ jobs:
           # tags: true
       after_success:
         - ./push.sh
-
         # provider: script
         # skip_cleanup: true
-        on:
-          tags: false
+        # on:
+        #   tags: false
         # - git config --global push.default matching
         # - git config --global user.email "alisonmsn@hotmail.com"
         # - git config --global user.name "slipalison"
