@@ -18,7 +18,11 @@ jobs:
         - yarn test:ci
     - stage: npm release
       script:
+        - yarn version --patch
         - yarn build
+        on:
+          all_branches: true
+          condition: $TRAVIS_BRANCH != master
       deploy:
         provider: npm
         email: '$NPM_EMAIL'
@@ -34,7 +38,7 @@ jobs:
         - git config credential.helper "store --file=.git/credentials"
         - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
         - git checkout -- .
-        - yarn version --patch
+
         - git status
         - git push origin HEAD:$TRAVIS_BRANCH
         - git push --tags
@@ -42,4 +46,4 @@ jobs:
 branches:
   only:
     - master
-    - /^v[0-9]+.*$/
+    # - /^v[0-9]+.*$/
