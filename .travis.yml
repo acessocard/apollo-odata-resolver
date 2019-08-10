@@ -33,7 +33,7 @@ jobs:
         - git add --all
         - git commit -m 'some message'
         - git push https://$GH_TOKEN@github.com/slipalison/apollo-odata-resolver.git 
-        - git push --tags
+        - git push https://$GH_TOKEN@github.com/slipalison/apollo-odata-resolver.git --tags
 
 
 branches:
