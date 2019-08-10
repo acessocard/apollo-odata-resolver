@@ -27,13 +27,13 @@ jobs:
         api_key: '$NPM_TOKEN'
         skip_cleanup: true
         on:
+          branch: master
           tags: true
       before_deploy:
         provider: script
         skip_cleanup: true
         script: push.sh
         on:
-          branch: master
           tags: false
         # - git config --global push.default matching
         # - git config --global user.email "alisonmsn@hotmail.com"
