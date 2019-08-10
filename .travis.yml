@@ -30,7 +30,7 @@ jobs:
           branch: master
           # tags: true
       before_deploy:
-        provider: script
+        # provider: script
         skip_cleanup: true
         script: ./push.sh
         on:
