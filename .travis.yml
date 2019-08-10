@@ -37,9 +37,9 @@ jobs:
         - echo "https://$GH_TOKEN:@github.com" > .git/credentials
         - git checkout -- .
         - git status
-        - npm version patch -m "chore: release version %s"
-        - git push origin HEAD:$TRAVIS_BRANCH
-        - git push --tags
+        - yarn version --patch
+        - git push https://${GH_TOKEN}@github.com/slipalison/apollo-odata-resolver.git origin HEAD:$TRAVIS_BRANCH
+        - git push https://${GH_TOKEN}@github.com/slipalison/apollo-odata-resolver.git --tags
         # provider: script
         # skip_cleanup: true
         # on:
