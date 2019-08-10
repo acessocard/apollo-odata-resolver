@@ -38,8 +38,8 @@ jobs:
         - git checkout -- .
         - yarn version --patch
         - git status
-        - git push https://${GH_TOKEN}@github.com/slipalison/apollo-odata-resolver.git origin HEAD:$TRAVIS_BRANCH
-        - git push https://${GH_TOKEN}@github.com/slipalison/apollo-odata-resolver.git --tags
+        - git push origin HEAD:$TRAVIS_BRANCH
+        - git push --tags
         # provider: script
         # skip_cleanup: true
         # on:
