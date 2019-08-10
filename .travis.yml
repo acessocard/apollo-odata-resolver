@@ -28,7 +28,7 @@ jobs:
         skip_cleanup: true
         on:
           branch: master
-          # tags: true
+          tags: true
       after_success:
         - git config --global user.email "alisonmsn@hotmail.com"
         - git config --global user.name "slipalison"
