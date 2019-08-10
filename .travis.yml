@@ -31,8 +31,8 @@ jobs:
           # tags: true
       before_deploy:
         # provider: script
-        skip_cleanup: true
-        script: ./push.sh
+        # skip_cleanup: true
+        - ./push.sh
         on:
           tags: false
         # - git config --global push.default matching
