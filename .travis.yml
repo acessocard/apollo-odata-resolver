@@ -38,18 +38,6 @@ jobs:
         - git status
         - git push origin HEAD:$TRAVIS_BRANCH
         - git push --tags
-        # provider: script
-        # skip_cleanup: true
-        # on:
-        #   tags: false
-        # - git config --global push.default matching
-        # - git config --global user.email "alisonmsn@hotmail.com"
-        # - git config credential.helper "store --file=.git/credentials"
-        # - echo "https://${GitHub_Token}:@github.com" > .git/credentials
-        # - git add --all
-        # - git commit -m 'some message'
-        # - git push https://${GH_TOKEN}@github.com/slipalison/apollo-odata-resolver.git
-        # - git push https://${GH_TOKEN}@github.com/slipalison/apollo-odata-resolver.git --tags
 
 branches:
   only:
