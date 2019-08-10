@@ -12,7 +12,7 @@ setup_git() {
   git config credential.helper "store --file=.git/credentials"
 
   # This associates the API Key with the account
-  echo "https://${GH_TOKEN}:@github.com" > .git/credentials
+  echo "https://${GH_TOKEN}:@github.com" >.git/credentials
 }
 
 make_version() {
@@ -28,7 +28,7 @@ make_version() {
   # Run the deploy build and increment the package versions
   # %s is the placeholder for the created tag
   # npm version patch -m "chore: release version %s"
-  yarn version --patch
+  # yarn version --patch
 }
 
 upload_files() {
@@ -39,6 +39,9 @@ upload_files() {
   git push --tags
 }
 
-setup_git
-make_version
-upload_files
+if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+  # hey that's a pull request
+  setup_git
+  make_version
+  upload_files
+fi
