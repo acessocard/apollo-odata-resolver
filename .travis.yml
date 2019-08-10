@@ -46,7 +46,6 @@ jobs:
         #   tags: false
         # - git config --global push.default matching
         # - git config --global user.email "alisonmsn@hotmail.com"
-        # - git config --global user.name "slipalison"
         # - git config credential.helper "store --file=.git/credentials"
         # - echo "https://${GitHub_Token}:@github.com" > .git/credentials
         # - git add --all
