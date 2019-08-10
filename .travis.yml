@@ -8,11 +8,6 @@ cache:
     - node_modules
 
 install:
-  # - git config --global user.email "alisonmsn@hotmail.com"
-  # - git config --global user.name "slipalison"
-  # - git config --global push.default matching
-  # - git config credential.helper "store --file=.git/credentials"
-  # - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
   - yarn install --frozen-lockfile
 
 jobs:
@@ -35,10 +30,6 @@ jobs:
           tags: true
       after_success:
         - ./push.sh
-        # - git checkout -- .
-        # - git status
-        # - git push origin HEAD:$TRAVIS_BRANCH
-        # - git push --tags
 
 branches:
   only:
