@@ -1,5 +1,5 @@
 {
-  "name": "apollo-odata-resolver-tests",
+  "name": "apollo-odata-resolver",
   "version": "1.0.0",
   "description": "",
   "_moduleAliases": {
@@ -11,6 +11,9 @@
     "build/src"
   ],
   "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [],
   "scripts": {
     "test": "jest --coverage --forceExit",
@@ -22,12 +25,10 @@
     "lint": "gts check",
     "lint:ci": "gts check",
     "build": "yarn run compile",
-    "build:clean": "yarn run compile:clean",
     "prepare": "yarn run compile",
     "pretest": "yarn run compile",
     "posttest": "yarn run check",
-    "debug": "yarn clean && yarn compile && nodemon --inspect build/src/server.js",
-    "prepublish": "tsc"
+    "debug": "yarn clean && yarn compile && nodemon --inspect build/src/server.js"
   },
   "devDependencies": {
     "@types/debug": "^4.1.2",
@@ -46,7 +47,6 @@
   },
   "dependencies": {
     "@types/debug": "^4.1.2",
-    "@types/dotenv": "^6.1.1",
     "@types/node": "^12.6.8",
     "apollo-server": "^2.5.0",
     "apollo-server-core": "^2.8.1",

@@ -1,8 +1,8 @@
 version: 1.0.{build}
 environment:
   nodejs_version: "10"
-  npm_auth_token:
-    secure: t3A7BK3/Np/2YF3MFFIQmEzDrT26YEcMXzMLMiQFgxEVaE8y84pJ+46CnFsM+M5Y
+  # npm_auth_token:
+  #   secure: t3A7BK3/Np/2YF3MFFIQmEzDrT26YEcMXzMLMiQFgxEVaE8y84pJ+46CnFsM+M5Y
 build:
   verbosity: detailed
 
@@ -26,6 +26,9 @@ install:
 
   - yarn install --frozen-lockfile
 
+  - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII'
+  - ps: Get-Content "$env:userprofile\.npmrc"
+
 
 build_script:
 - ps: >-
@@ -33,14 +36,16 @@ build_script:
 
     yarn run build
 test_script:
-- yarn test:ci
+  - yarn test:ci
+  - yarn publish --force
+
 before_deploy:
-- ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII'
+  - ps: '"//registry.npmjs.org/:_authToken=$env:npm_auth_token`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII'
 deploy_script:
-- ps: yarn publish
+  - ps: yarn publish --force
 
 deploy:
   provider: Environment
-  name: NPM
+  name: Production
   on:
     branch: master

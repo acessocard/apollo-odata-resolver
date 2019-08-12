@@ -1,0 +1,37 @@
+language: node_js
+node_js:
+  - '10'
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+install:
+  - yarn install --frozen-lockfile
+
+jobs:
+  include:
+    - stage: Build and test
+      script:
+        - yarn build
+        - yarn test:ci
+    - stage: npm release
+      script:
+        # - yarn version --patch
+        - yarn build
+      deploy:
+        provider: npm
+        email: '$NPM_EMAIL'
+        api_key: '$NPM_TOKEN'
+        skip_cleanup: true
+        on:
+          branch: master
+          tags: true
+      after_success:
+        - ./push.sh
+
+branches:
+  only:
+    - master
+    - /^v[0-9]+.*$/
