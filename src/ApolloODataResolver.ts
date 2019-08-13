@@ -89,9 +89,9 @@ export class ApolloODataResolver {
       if (hasQuery.length > 0) {
         query = hasQuery[0].query;
       }
-      const uri = `${node.url}?${resolved}${query ? '&' : ''}${query ? this.filter : ''}`;
+      const uri = `${node.url}?${resolved}${query ? '&' : ''}`; //${query ? this.filter : ''}
 
-      const hasFilter = uri.includes('&$filter=');
+      const hasFilter = uri.includes(`&${this.filter}`);
       let queryString = '';
 
       if (!hasFilter) {
